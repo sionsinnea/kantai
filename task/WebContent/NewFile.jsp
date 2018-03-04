@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>视频播放</title>
 </head>
 <body>
 <h1>测试</h1>
+
 </body>
 </html>
