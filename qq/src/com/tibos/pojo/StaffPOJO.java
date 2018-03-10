@@ -22,10 +22,16 @@ public class StaffPOJO {
 	String sex;
 	String file;
 	Integer degId;
-	
+	Integer deptId;
 	
 
 	
+	public Integer getDeptId() {
+		return deptId;
+	}
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
+	}
 	public Integer getDegId() {
 		return degId;
 	}
@@ -102,7 +108,7 @@ public class StaffPOJO {
 		this.file = file;
 	}
 	public StaffPOJO(Integer id, String name, String pic, String userName, String password, Integer age, String address,
-			String phone, String sex, Integer degId) {
+			String phone, String sex, Integer degId,Integer deptId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -114,6 +120,7 @@ public class StaffPOJO {
 		this.phone = phone;
 		this.sex = sex;
 		this.degId = degId;
+		this.deptId = deptId;
 	}
 	public StaffPOJO(String userName, String password, String name, Integer age, String pic, String phone) {
 		super();

@@ -8,7 +8,6 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>后台管理模板</title>
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,7 +23,11 @@
 		boolean flag = session.getAttribute("userid") == null;
 		if(flag){
 			response.sendRedirect("login.jsp");
-		} 
+		}else if((int)session.getAttribute("degId") == 3){
+			response.sendRedirect("elite.jsp");
+		}else if((int)session.getAttribute("degId") > 3){
+			response.sendRedirect("flagship.jsp");
+		}
 		%>
 	</head>
 
@@ -127,7 +130,7 @@
 			
 			
 			<script type="text/javascript" src="<%=realPath%>plugins/layui/layui.js"></script>
-			<script type="text/javascript" src="<%=realPath%>datas/nav.js"></script>
+			<script type="text/javascript" src="<%=realPath%>datas/nav3.js"></script>
 			<script src="<%=realPath%>js/index.js"></script>
 			
 			

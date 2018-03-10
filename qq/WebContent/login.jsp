@@ -72,11 +72,13 @@
 							    		alert("用户名或密码错误,登陆失败!"); 
 								    }else if(data > 3){
 								    	
+								    	location.replace("<%=realPath%>flagship.jsp");
+								    }else if(data = 3){
+								    	location.replace("<%=realPath%>elite.jsp");
+								    }else if(data <3){
 								    	location.replace("<%=realPath%>index.jsp");
-								    }else{
-								    	location.replace("<%=realPath%>indexstaff.jsp");
 								    }
-								    });
+								    },'json');
 								 
 					return false;
 				});

@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>后台管理模板</title>
+		<title>tibos管理系统</title>
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,7 +24,11 @@
 		boolean flag = session.getAttribute("userid") == null;
 		if(flag){
 			response.sendRedirect("login.jsp");
-		} 
+		}else if((int)session.getAttribute("degId") == 3){
+			response.sendRedirect("elite.jsp");
+		}else if((int)session.getAttribute("degId") < 3){
+			response.sendRedirect("index.jsp");
+		}
 		%>
 	</head>
 
@@ -34,7 +38,7 @@
 				<div class="layui-main">
 					<div class="admin-login-box">
 						<a class="logo" style="left: 0;" href="<%=realPath %>index.jsp">
-							<span style="font-size: 22px;">任务管理系统</span>
+							<span style="font-size: 22px;">Tibos管理系统</span>
 						</a>
 						<div class="admin-side-toggle">
 							<i class="fa fa-bars" aria-hidden="true"></i>
@@ -57,7 +61,7 @@
 							<a href="javascript:;" class="admin-header-user">
 								<img id="mypic" src="<%=realPath+session.getAttribute("pic")%>"/>
 								
-								<span><%
+								<span id="myname"><%
 
 									if(session.getAttribute("userid")!=null){
 									%>
@@ -68,11 +72,7 @@
 									%></span>
 							</a>
 							<dl class="layui-nav-child">
-								<dd id="lock">
-									<a href="javascript:;">
-										<i class="fa fa-lock" aria-hidden="true" style="padding-right: 3px;padding-left: 1px;"></i> 锁屏 (Alt+L)
-									</a>
-								</dd>
+								
 								<dd>
 									<a href="login.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
 								</dd>
@@ -115,19 +115,11 @@
 				<i class="layui-icon">&#xe602;</i>
 			</div>
 			<div class="site-mobile-shade"></div>
-			<!--锁屏模板 start-->
-			<script type="text/template" id="lock-temp">
-				<div class="admin-header-lock" id="lock-box">
-					
-					<input type="text" class="admin-header-lock-input" value="输入密码解锁.." name="lockPwd" id="lockPwd" />
-					<button class="layui-btn layui-btn-small" id="unlock">解锁</button>
-				</div>
-			</script>
-			<!--锁屏模板 end -->
+
 			
 			
 			<script type="text/javascript" src="<%=realPath%>plugins/layui/layui.js"></script>
-			<script type="text/javascript" src="<%=realPath%>datas/nav2.js"></script>
+			<script type="text/javascript" src="<%=realPath%>datas/nav.js"></script>
 			<script src="<%=realPath%>js/index.js"></script>
 			
 			
@@ -142,7 +134,7 @@
 					
 					$('#video1').on('click', function() {
 						layer.open({
-							title: '欢乐时光',
+							title: '勉強',
 							maxmin: true,
 							type: 2,
 							content: 'video.jsp',

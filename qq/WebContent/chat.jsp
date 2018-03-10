@@ -78,6 +78,12 @@
                 }, {
                     fieldName: '性别',
                     field: 'sex'
+                }, {
+                    fieldName: '部门',
+                    field: 'deptName'
+                }, {
+                    fieldName: '职位',
+                    field: 'degName'
                 }],
                 even: true,
                 field: 'id', 

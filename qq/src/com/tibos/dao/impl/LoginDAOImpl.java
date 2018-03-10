@@ -21,13 +21,13 @@ public class LoginDAOImpl implements LoginDAO {
 		StaffPOJO pojo = null;
 		try {
 							
-			String sql = "select id , name , pic , userName , password , age , address , phone , sex , deg_id from staff where username = ? and password = ? ";
+			String sql = "select id , name , pic , userName , password , age , address , phone , sex , deg_id ,dept_id from staff where username = ? and password = ? and is_del ='on' ";
 			pstate = this.conn.prepareStatement(sql);
 			pstate.setString(1, userName);
 			pstate.setString(2, password);
 			res = pstate.executeQuery();
 			if(res.next()){
-				 pojo = new StaffPOJO(res.getInt(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getInt(6),res.getString(7),res.getString(8),res.getString(9),res.getInt(10));
+				 pojo = new StaffPOJO(res.getInt(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getInt(6),res.getString(7),res.getString(8),res.getString(9),res.getInt(10),res.getInt(11));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

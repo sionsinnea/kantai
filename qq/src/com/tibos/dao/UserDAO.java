@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tibos.pojo.StaffDTO;
 import com.tibos.pojo.StaffPOJO;
+import com.tibos.pojo.UserDTO;
 
 public interface UserDAO {
 	public boolean updateUser(StaffPOJO staffpojo);
@@ -18,5 +19,5 @@ public interface UserDAO {
 	
 	public int countpage();
 	
-	public boolean updStaff(StaffDTO staffdto);
+	public boolean updStaff(UserDTO staffdto);
 }

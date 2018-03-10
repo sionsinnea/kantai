@@ -31,7 +31,37 @@
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">单选框</label>
+    <div class="layui-inline">
+      <label class="layui-form-label">部门</label>
+      <div class="layui-input-inline">
+        <select id="dept" name="deptId" lay-verify="required" lay-search="">
+         
+          <option value="1">开发1部</option>
+          <option value="2">开发2部</option>
+          <option value="3">开发3部</option>
+          <option value="4">海外开发部</option>
+          <option value="5">开发事业部</option>
+
+        </select>
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">职位</label>
+      <div class="layui-input-inline">
+        <select id="degress" name="degId" lay-verify="required" lay-search="">
+          
+          <option value="1">见习</option>
+          <option value="2">一般</option>
+          <option value="3">组长</option>
+          <option value="4">领导</option>
+          <option value="5">管理员</option>
+
+        </select>
+      </div>
+    </div>
+  </div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">性别</label>
 			<div class="layui-input-block">
 				<input type="radio" name="sex" value="男" title="男">
 				<input type="radio" name="sex" value="女" title="女" checked>

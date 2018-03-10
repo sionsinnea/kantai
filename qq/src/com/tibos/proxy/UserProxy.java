@@ -11,6 +11,7 @@ import com.tibos.dao.impl.LoginDAOImpl;
 import com.tibos.dao.impl.UserDAOImpl;
 import com.tibos.pojo.StaffDTO;
 import com.tibos.pojo.StaffPOJO;
+import com.tibos.pojo.UserDTO;
 import com.tibos.util.GetConnection;
 
 
@@ -80,9 +81,9 @@ public class UserProxy implements UserDAO{
 	}
 
 	@Override
-	public boolean updStaff(StaffDTO StaffDTO) {
+	public boolean updStaff(UserDTO userdto) {
 		// TODO Auto-generated method stub
-		boolean flag = impl.updStaff(StaffDTO);
+		boolean flag = impl.updStaff(userdto);
 		return flag;
 	}
 

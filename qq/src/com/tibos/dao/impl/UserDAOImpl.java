@@ -9,6 +9,7 @@ import java.util.List;
 import com.tibos.dao.UserDAO;
 import com.tibos.pojo.StaffDTO;
 import com.tibos.pojo.StaffPOJO;
+import com.tibos.pojo.UserDTO;
 
 
 public class UserDAOImpl implements UserDAO{
@@ -107,15 +108,17 @@ public class UserDAOImpl implements UserDAO{
 		pageindex = (pageindex-1)*pagesize;
 		try {
 							
-			String sql = "select id , name  , age , address , phone , sex from staff where is_del = 'on'  and name like ? limit ?,? ";
+			String sql = "select s.id , s.name  , s.age , s.address , s.phone , s.sex ,d.name,g.deg_name, "+
+			"s.dept_id,s.deg_id  from staff s,dept d, degrade g where s.dept_id = d.dept_id "+
+					" and s.deg_id = g.deg_id and is_del = 'on'  and s.name like ? limit ?,? ";
 			pstate = this.conn.prepareStatement(sql);
 			pstate.setString(1, "%"+searchname+"%");
 			pstate.setInt(2, pageindex);
 			pstate.setInt(3, pagesize);
 			res = pstate.executeQuery();
 			while(res.next()){
-				StaffPOJO pojo = new StaffPOJO(res.getInt(1),res.getString(2),res.getInt(3),res.getString(4),res.getString(5),res.getString(6));
-				list.add(pojo);
+				UserDTO dto = new UserDTO(res.getInt(1),res.getString(2),res.getInt(3),res.getString(4),res.getString(5),res.getString(6),res.getString(7),res.getString(8),res.getInt(9),res.getInt(10));
+				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,11 +171,11 @@ public class UserDAOImpl implements UserDAO{
 			this.conn.setAutoCommit(false);//取消自动提交
 			StringBuilder sql = new StringBuilder();
 			if(staffdto.getIs_del() != null) {
-				 sql.append(" insert into staff (name,age,phone,address,sex,username,password,is_del) values "); 
-				 sql.append("(?,?,?,?,?,?,?,?)");
+				 sql.append(" insert into staff (name,age,phone,address,sex,username,password,dept_Id,deg_Id,is_del) values "); 
+				 sql.append("(?,?,?,?,?,?,?,?,?,?)");
 			}else {
-				 sql.append(" insert into staff (name,age,phone,address,sex,username,password) values "); 
-				 sql.append("(?,?,?,?,?,?,?)");
+				 sql.append(" insert into staff (name,age,phone,address,sex,username,password,dept_Id,deg_Id) values "); 
+				 sql.append("(?,?,?,?,?,?,?,?,?)");
 			}
 			pstate = this.conn.prepareStatement(sql.toString());	
 			pstate.setString(1, staffdto.getName());
@@ -182,8 +185,10 @@ public class UserDAOImpl implements UserDAO{
 			pstate.setString(5, staffdto.getSex());
 			pstate.setString(6, staffdto.getName());
 			pstate.setString(7, staffdto.getName());
+			pstate.setInt(8, staffdto.getDeptId());
+			pstate.setInt(9, staffdto.getDegId());
 			if(staffdto.getIs_del() != null) {
-			pstate.setString(8, staffdto.getIs_del());
+			pstate.setString(10, staffdto.getIs_del());
 			}
 			pstate.execute();
 			this.conn.commit();//提交
@@ -236,22 +241,24 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public boolean updStaff(StaffDTO StaffDTO) {
+	public boolean updStaff(UserDTO userdto) {
 		// TODO Auto-generated method stub
 		boolean flag = false;
 		PreparedStatement pstate = null;
 		try {
 			this.conn.setAutoCommit(false);//取消自动提交
 			
-				String sql = " update staff set name = ? , age = ? , phone = ? , address = ? , sex = ? where id = ? ";
+				String sql = " update staff set name = ? , age = ? , phone = ? , address = ? , sex = ? ,dept_id = ? , deg_id = ? where id = ? ";
 						pstate = this.conn.prepareStatement(sql);	
 					
-						pstate.setString(1, StaffDTO.getName());
-						pstate.setInt(2, StaffDTO.getAge());
-						pstate.setString(3, StaffDTO.getPhone());
-						pstate.setString(4, StaffDTO.getAddress());
-						pstate.setString(5, StaffDTO.getSex());
-						pstate.setInt(6, StaffDTO.getId());
+						pstate.setString(1, userdto.getName());
+						pstate.setInt(2, userdto.getAge());
+						pstate.setString(3, userdto.getPhone());
+						pstate.setString(4, userdto.getAddress());
+						pstate.setString(5, userdto.getSex());
+						pstate.setInt(6, userdto.getDeptId());
+						pstate.setInt(7, userdto.getDegId());
+						pstate.setInt(8, userdto.getId());
 			
 			
 			pstate.execute();

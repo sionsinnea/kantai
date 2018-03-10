@@ -31,6 +31,38 @@
 				<input id="address" type="text" name="address" required lay-verify="" placeholder="请输入地址" autocomplete="off" class="layui-input">
 			</div>
 		</div>
+		
+		<div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">部门</label>
+      <div class="layui-input-inline">
+        <select id="dept" name="deptId" lay-verify="required" lay-search="">
+         
+          <option value="1">开发1部</option>
+          <option value="2">开发2部</option>
+          <option value="3">开发3部</option>
+          <option value="4">海外开发部</option>
+          <option value="5">开发事业部</option>
+
+        </select>
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">职位</label>
+      <div class="layui-input-inline">
+        <select id="degress" name="degId" lay-verify="required" lay-search="">
+          
+          <option value="1">见习</option>
+          <option value="2">一般</option>
+          <option value="3">组长</option>
+          <option value="4">领导</option>
+          <option value="5">管理员</option>
+
+        </select>
+      </div>
+    </div>
+  </div>
+		
 		<div class="layui-form-item">
 			<label class="layui-form-label">单选框</label>
 			<div class="layui-input-block">

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.tibos.factory.UserFactory;
 import com.tibos.pojo.StaffDTO;
+import com.tibos.pojo.UserDTO;
 import com.tibos.util.DTOBuilder;
 
 /**
@@ -25,7 +26,7 @@ public class UpdUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		StaffDTO staffdto = (StaffDTO)DTOBuilder.getDTO(request, StaffDTO.class);
+		UserDTO staffdto = (UserDTO)DTOBuilder.getDTO(request, UserDTO.class);
 		response.setContentType("text/html; charset=utf-8");//设置响应的Mime类型
 		PrintWriter out = response.getWriter();//取得out对象
 		request.setCharacterEncoding("utf-8");//设置统一编码

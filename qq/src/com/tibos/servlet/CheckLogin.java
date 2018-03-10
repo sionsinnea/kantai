@@ -57,7 +57,8 @@ public class CheckLogin extends HttpServlet {
 			session.setAttribute("address", pojo.getAddress());
 			session.setAttribute("phone", pojo.getPhone());
 			session.setAttribute("sex", pojo.getSex());
-			
+			session.setAttribute("deptId", pojo.getDeptId());
+			session.setAttribute("degId", pojo.getDegId());
 			out.print(pojo.getDegId());
 		}else {
 			out.print("error");

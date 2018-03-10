@@ -8,7 +8,21 @@ public class StaffDTO {
 	String address;
 	String sex;
 	String is_del;
+	Integer deptId;
+	Integer degId;
 	
+	public Integer getDeptId() {
+		return deptId;
+	}
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
+	}
+	public Integer getDegId() {
+		return degId;
+	}
+	public void setDegId(Integer degId) {
+		this.degId = degId;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -64,7 +78,7 @@ public class StaffDTO {
 		this.address = address;
 		this.sex = sex;
 	}
-	public StaffDTO(String name, Integer age, String phone, String address, String sex, String is_del) {
+	public StaffDTO(String name, Integer age, String phone, String address, String sex, String is_del,Integer deptId,Integer degId) {
 		super();
 		this.name = name;
 		this.age = age;
@@ -72,6 +86,8 @@ public class StaffDTO {
 		this.address = address;
 		this.sex = sex;
 		this.is_del = is_del;
+		this.deptId = deptId;
+		this.degId = degId;
 	}
 	public StaffDTO(Integer id, String name, Integer age, String phone, String address, String sex, String is_del) {
 		super();

@@ -6,7 +6,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>layui</title>
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -42,14 +41,14 @@
 		 <div class="layui-form-item">
     <label class="layui-form-label">密码</label>
     <div class="layui-input-inline">
-      <input name="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" type="text" value="<%=session.getAttribute("password")%>">
+      <input name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input" type="text" value="<%=session.getAttribute("password")%>">
     </div>
   </div>
   
    <div class="layui-form-item">
     <label class="layui-form-label">姓名</label>
     <div class="layui-input-inline">
-      <input name="name" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" type="text" value="<%=session.getAttribute("name")%>">
+      <input id="name" name="name" lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" type="text" value="<%=session.getAttribute("name")%>">
     </div>
   </div>
   
@@ -218,10 +217,11 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 		$.post("<%=realPath %>ShowUser",data.field,function(data){
 			if(data){
 				layer.msg("修改成功", {time: 2000});
-/* 				var url = "{:U('student/student_lists')}"; 
-				setTimeout(window.location.href=url,2000); */
 				 var ispic = $('#mypic', parent.document);
 				 var picpath = $("#demo1").attr("src");
+				 var myname = $('#name').val();
+				 var oldname = $('#myname',parent.document);
+				 oldname.text(myname);
 				ispic.attr('src',picpath);
 				}else{
 				layer.msg("修改失败", {time: 2000});

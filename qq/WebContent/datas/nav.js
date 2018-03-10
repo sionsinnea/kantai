@@ -1,93 +1,42 @@
 var navs = [{
-	"title": "功能菜单",
+	"title": "任务功能",
 	"icon": "fa-cubes",
 	"spread": true,
 	"children": [{
 		"title": "任务管理",
 		"icon": "&#xe62a;",
-		"href": "button.html"
+		"href": "taskmanager.jsp"
 	}, {
 		"title": "进度统计",
 		"icon": "&#xe629;",
-		"href": "form.html"
+		"href": "process.jsp"
 	}, {
-		"title": "留言板",
-		"icon": "&#xe63c;",
-		"href": "table.html"
+		"title": "进行中任务",
+		"icon": "&#xe610;",
+		"href": "dotask.jsp"
+	}]
+}, {
+	"title": "其他事务",
+	"icon": "fa-address-book",
+	"href": "",
+	"spread": false,
+	"children": [{
+		"title": "人员管理",
+		"icon": "&#xe612;",
+		"href": "test.jsp"
 	}, {
 		"title": "通讯录",
 		"icon": "&#xe613;",
 		"href": "chat.jsp"
 	}, {
-		"title": "人员管理",
-		"icon": "&#xe610;",
-		"href": "test.jsp"
+		"title": "留言板",
+		"icon": "&#xe63c;",
+		"href": "message.jsp",
+		"spread": false
 	}]
-}, {
-	"title": "组件",
-	"icon": "fa-cogs",
-	"spread": false,
-	"children": [{
-		"title": "BTable",
-		"icon": "fa-table",
-		"href": "btable.html"
-	}, {
-		"title": "Navbar组件",
-		"icon": "fa-navicon",
-		"href": "navbar.html"
-	}, {
-		"title": "Tab组件",
-		"icon": "&#xe62a;",
-		"href": "tab.html"
-	}, {
-		"title": "Laytpl+Laypage",
-		"icon": "&#xe628;",
-		"href": "paging.html"
-	}]
-}, {
-	"title": "第三方组件",
-	"icon": "&#x1002;",
-	"spread": false,
-	"children": [{
-		"title": "iCheck组件",
-		"icon": "fa-check-square-o",
-		"href": "icheck.html"
-	}]
-}, {
-	"title": "地址本",
-	"icon": "fa-address-book",
-	"href": "",
-	"spread": false,
-	"children": [{
-		"title": "Github",
-		"icon": "fa-github",
-		"href": "https://www.github.com/"
-	}, {
-		"title": "QQ",
-		"icon": "fa-qq",
-		"href": "http://www.qq.com/"
-	}, {
-		"title": "Fly社区",
-		"icon": "&#xe609;",
-		"href": "http://fly.layui.com/"
-	}, {
-		"title": "新浪微博",
-		"icon": "fa-weibo",
-		"href": "http://weibo.com/"
-	}]
-}, {
+},{
 	"title": "个人信息",
-	"icon": "&#xe642;",
+	"icon": "&#xe620;",
 	"href": "info.jsp",
 	"spread": false
-}, {
-	"title": "其他",
-	"icon": "fa-stop-circle",
-	"href": "#",
-	"spread": false,
-	"children": [{
-		"title": "子窗体中打开选项卡",
-		"icon": "fa-github",
-		"href": "cop.html"
-	}]
 }];

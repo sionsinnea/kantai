@@ -11,7 +11,6 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>btable</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -78,7 +77,19 @@
                 }, {
                     fieldName: '性别',
                     field: 'sex'
-                },{
+                }, {
+                    fieldName: '部门',
+                    field: 'deptName'
+                }, {
+                    fieldName: '职位',
+                    field: 'degName'
+                }, {
+                    fieldName: '部门id',
+                    field: 'deptId'
+                }, {
+                    fieldName: '职位id',
+                    field: 'degId'
+                }, {
                     fieldName: '操作',
                     field: 'id',
                     format: function (val,obj) {
@@ -89,16 +100,22 @@
                 }],
                 even: true,
                 field: 'id', //主键ID
+
                 //skin: 'row',
                 checkbox: false,
                 paged: true,
                 singleSelect: false,
                 onSuccess: function ($elem) {
+                	$('table').children('thead').children('tr:first-child').find("th:eq(8)").hide();
+                	$('table').children('thead').children('tr:first-child').find("th:eq(9)").hide();
+                	$('table').children('tbody').children('tr').find("td:eq(9)").hide();
+                	$('table').children('tbody').children('tr').find("td:eq(10)").hide();
                     $elem.children('tr').each(function () {
                         $(this).children('td:last-child').children('input').each(function () {
                             var $that = $(this);
                             var action = $that.data('action');
                             var id = $that.data('id');
+                            
                             $that.on('click', function () {
                              	    switch (action) {
                                     case 'edit':
@@ -111,6 +128,8 @@
                 				var phone = $that.parent('td').siblings('td[data-field=phone]').text();
                 				var address = $that.parent('td').siblings('td[data-field=address]').text();
                 				var sex = $that.parent('td').siblings('td[data-field=sex]').text();
+                				var deptId = $that.parent('td').siblings('td[data-field=deptId]').text();
+                				var degId = $that.parent('td').siblings('td[data-field=degId]').text();
                 				$.get('<%=realPath%>temp/edituser.jsp', null, function(form) {
                 					addBoxIndex = layer.open({
                 						type: 1,
@@ -152,8 +171,10 @@
                 											
                 											 $('input[name="sex"]:eq(0)').attr("checked",'checked'); 
                 									 	}else if(sex == '女'){
-                									 		$('input[name="sex"]:eq(1)').attr("checked",'checked'); 
+                									 		 $('input[name="sex"]:eq(1)').attr("checked",'checked'); 
                 									 	}
+                									$("#dept option[value="+deptId+"]").attr('selected', true);
+                									$("#degress option[value="+degId+"]").attr('selected', true);
                 										form.render(); 
                 							});
                 							form.on('submit(edit)', function(data) {
@@ -203,6 +224,7 @@
             });
             btable.render();
             
+            var addBoxIndex = -1;
 			$('#add').on('click', function() {
 				if(addBoxIndex !== -1)
 					return;
@@ -237,26 +259,8 @@
 							//弹出窗口成功后渲染表单
 							var form = layui.form();
 							form.render();
-							
 							form.on('submit(edit)', function(data) {
-								/* console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
-								console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
-								console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value} */
-								//调用父窗口的layer对象
-							/* 	layerTips.open({
-									title: '这里面是表单的信息',
-									type: 1,
-									content: JSON.stringify(data.field),
-									area: ['500px', '300px'],
-									btn: ['关闭并刷新', '关闭'],
-									yes: function(index, layero) {
-										layerTips.msg('你点击了关闭并刷新');
-										layerTips.close(index);
-										location.reload(); //刷新
-									}
-
-								}); */
-								//这里可以写ajax方法提交表单
+								
 								$.post("<%=realPath %>AddUser",data.field,function(data){
 									
 								if(data == true){
@@ -276,7 +280,7 @@
 					});
 				});
 			});
-
+			  
             //监听搜索表单的提交事件
             form.on('submit(search)', function (data) {
                 btable.get(data.field);
